@@ -12,6 +12,7 @@ class DollarTest extends \PHPUnit_Framework_TestCase {
 
 	public function testFactory() {
 		$eight = Money::dollar(8);
-		$this->assertInstanceOf('money\Dollar', $eight);
+		$this->assertInstanceOf('money\Money', $eight);
+		$this->assertEquals('USD', $eight->currency());
 	}
 }
