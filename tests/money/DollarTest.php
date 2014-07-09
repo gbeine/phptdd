@@ -15,4 +15,9 @@ class DollarTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($five->equals(new Dollar(5)));
 		$this->assertFalse($five->equals(new Dollar(4)));
 	}
+
+	public function testFactory() {
+		$eight = Money::dollar(8);
+		$this->assertInstanceOf('money\Dollar', $eight);
+	}
 }
