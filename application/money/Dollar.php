@@ -4,9 +4,9 @@ namespace money;
 
 class Dollar extends Money {
 
-	function __construct($amount) {
+	function __construct($amount, $currency) {
 		$this->amount = $amount;
-		$this->currency = "USD";
+		$this->currency = $currency;
 	}
 
 	function times($multiplier) {
