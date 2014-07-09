@@ -10,7 +10,7 @@ class Euro extends Money {
 	}
 
 	function times($multiplier) {
-		return new Euro($this->amount * $multiplier);
+		return Money::euro($this->amount * $multiplier);
 	}
 
 	function amount() {
