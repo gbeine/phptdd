@@ -13,7 +13,7 @@ class Money {
 	}
 
 	function equals(Money $other) {
-		return get_class($other) === get_class($this) &&
+		return $this->currency === $other->currency &&
 			$this->amount === $other->amount;
 	}
 
