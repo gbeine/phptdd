@@ -15,7 +15,7 @@ class Dollar {
 	}
 
 	function equals(Dollar $other) {
-		return true;
+		return $this->amount === $other->amount;
 	}
 
 	function amount() {
