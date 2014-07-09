@@ -11,6 +11,8 @@ abstract class Money {
 			$this->amount === $other->amount;
 	}
 
+	abstract function currency();
+
 	static function dollar($amount) {
 		return new Dollar($amount);
 	}

@@ -15,4 +15,8 @@ class Euro extends Money {
 	function amount() {
 		return $this->amount;
 	}
+
+	function currency() {
+		return "EUR";
+	}
 }
