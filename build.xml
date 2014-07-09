@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="phptdd" default="testreport">
+
+	<property name="pear.dir" value="/usr/share/php5/PEAR" />
+
+	<property name="application.dir" value="./application" />
+	<property name="application.bootstrap" value="${application.dir}/bootstrap.php" />
+	<property name="test.dir" value="./tests" />
+	<property name="test.bootstrap" value="${test.dir}/bootstrap.php" />
+	<property name="report.dir" value="./reports" />
+	<property name="test.report.file" value="${report.dir}/testsuites.xml" />
+	<property name="test.report.dir" value="${report.dir}/tests" />
+	<property name="style.dir" value="${pear.dir}/data/phing/etc" />
+
+	<target name="test">
+		<mkdir dir="${report.dir}" />
+		<phpunit bootstrap="${test.bootstrap}">
+			<formatter todir="${report.dir}" type="xml"/>
+			<batchtest>
+				<fileset dir="${test.dir}">
+					<include name="**/*Test*.php"/>
+					<exclude name="**/Abstract*.php"/>
+					<exclude name="**/*Suite.php"/>
+				</fileset>
+			</batchtest>
+		</phpunit>
+	</target>
+
+	<target name="testreport" depends="test">
+		<mkdir dir="${test.report.dir}" />
+		<phpunitreport infile="${test.report.file}"
+			format="frames"
+			todir="${test.report.dir}"
+			styledir="${style.dir}" />
+	</target>
+
+</project>
