@@ -12,6 +12,10 @@ abstract class Money {
 			$this->amount === $other->amount;
 	}
 
+	function amount() {
+		return $this->amount;
+	}
+
 	function currency() {
 		return $this->currency;
 	}
