@@ -7,15 +7,15 @@ class DollarTest extends \PHPUnit_Framework_TestCase {
 	public function testMultiplication() {
 		$five = new Dollar(5);
 		$ten = $five->times(2);
-		$this->assertEquals(10, $ten->amount());
+		$this->assertEquals(new Dollar(10), $ten);
 	}
 
 	public function testSideEffects() {
 		$four = new Dollar(4);
 		$eight = $four->times(2);
-		$this->assertEquals(8, $eight->amount());
+		$this->assertEquals(new Dollar(8), $eight);
 		$twelve = $four->times(3);
-		$this->assertEquals(12, $twelve->amount());
+		$this->assertEquals(new Dollar(12), $twelve);
 	}
 
 	public function testEquals() {
