@@ -2,7 +2,7 @@
 
 namespace money;
 
-class Dollar {
+class Dollar extends Money {
 
 	private $amount;
 
