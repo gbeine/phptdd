@@ -17,10 +17,10 @@ abstract class Money {
 	}
 
 	static function dollar($amount) {
-		return new Dollar($amount);
+		return new Dollar($amount, "USD");
 	}
 
 	static function euro($amount) {
-		return new Euro($amount);
+		return new Euro($amount, "EUR");
 	}
 }
