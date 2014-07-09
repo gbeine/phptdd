@@ -4,7 +4,7 @@ namespace money;
 
 class Dollar {
 
-	var $amount;
+	private $amount;
 
 	function __construct($amount) {
 		$this->amount = $amount;
@@ -12,5 +12,9 @@ class Dollar {
 
 	function times($multiplier) {
 		$this->amount *= $multiplier;
+	}
+
+	function amount() {
+		return $this->amount;
 	}
 }
