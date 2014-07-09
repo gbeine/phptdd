@@ -34,6 +34,6 @@ class Money {
 	}
 
 	static function euro($amount) {
-		return new Euro($amount, "EUR");
+		return new Money($amount, "EUR");
 	}
 }
