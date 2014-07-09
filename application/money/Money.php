@@ -2,10 +2,15 @@
 
 namespace money;
 
-abstract class Money {
+class Money {
 
 	protected $amount;
 	protected $currency;
+
+	function __construct($amount, $currency) {
+		$this->amount = $amount;
+		$this->currency = $currency;
+	}
 
 	function equals(Money $other) {
 		return get_class($other) === get_class($this) &&
