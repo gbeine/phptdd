@@ -7,6 +7,7 @@ abstract class Money {
 	protected $amount;
 
 	function equals(Money $other) {
-		return $this->amount === $other->amount;
+		return get_class($other) === get_class($this) &&
+			$this->amount === $other->amount;
 	}
 }
