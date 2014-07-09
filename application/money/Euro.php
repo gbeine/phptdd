@@ -2,9 +2,7 @@
 
 namespace money;
 
-class Euro {
-
-	private $amount;
+class Euro extends Money {
 
 	function __construct($amount) {
 		$this->amount = $amount;
@@ -12,10 +10,6 @@ class Euro {
 
 	function times($multiplier) {
 		return new Euro($this->amount * $multiplier);
-	}
-
-	function equals(Euro $other) {
-		return $this->amount === $other->amount;
 	}
 
 	function amount() {
