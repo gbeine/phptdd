@@ -4,8 +4,6 @@ namespace money;
 
 class Dollar extends Money {
 
-	private $currency;
-
 	function __construct($amount) {
 		$this->amount = $amount;
 		$this->currency = "USD";
@@ -17,9 +15,5 @@ class Dollar extends Money {
 
 	function amount() {
 		return $this->amount;
-	}
-
-	function currency() {
-		return $this->currency;
 	}
 }
