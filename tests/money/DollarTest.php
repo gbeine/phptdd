@@ -21,5 +21,6 @@ class DollarTest extends \PHPUnit_Framework_TestCase {
 	public function testEquals() {
 		$five = new Dollar(5);
 		$this->assertTrue($five->equals(new Dollar(5)));
+		$this->assertFalse($five->equals(new Dollar(4)));
 	}
 }
