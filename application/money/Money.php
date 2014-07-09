@@ -14,4 +14,8 @@ abstract class Money {
 	static function dollar($amount) {
 		return new Dollar($amount);
 	}
+
+	static function euro($amount) {
+		return new Euro($amount);
+	}
 }
