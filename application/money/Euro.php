@@ -8,7 +8,4 @@ class Euro extends Money {
 		parent::__construct($amount, $currency);
 	}
 
-	function times($multiplier) {
-		return new Money($this->amount * $multiplier, 'EUR');
-	}
 }

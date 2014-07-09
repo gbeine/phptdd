@@ -17,6 +17,10 @@ class Money {
 			$this->amount === $other->amount;
 	}
 
+	function times($multiplier) {
+		return new Money($this->amount * $multiplier, 'EUR');
+	}
+
 	function amount() {
 		return $this->amount;
 	}
