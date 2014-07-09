@@ -16,4 +16,8 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($five->equals(Money::euro(5)));
 	}
 
+	function testCurrency() {
+		$this->assertEquals("EUR", Money::euro(5)->currency());
+		$this->assertEquals("USD", Money::dollar(5)->currency());
+	}
 }
