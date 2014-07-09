@@ -18,7 +18,7 @@ class Money {
 	}
 
 	function times($multiplier) {
-		return new Money($this->amount * $multiplier, 'EUR');
+		return new Money($this->amount * $multiplier, $this->currency);
 	}
 
 	function amount() {
