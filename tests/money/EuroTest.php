@@ -15,4 +15,9 @@ class EuroTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($five->equals(new Euro(5)));
 		$this->assertFalse($five->equals(new Euro(4)));
 	}
+
+	public function testFactory() {
+		$eight = Money::euro(8);
+		$this->assertInstanceOf('money\Euro', $eight);
+	}
 }
