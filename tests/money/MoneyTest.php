@@ -5,9 +5,9 @@ namespace money;
 class MoneyTest extends \PHPUnit_Framework_TestCase {
 
 	function testEquals() {
-		$five = new Dollar(5);
-		$this->assertTrue($five->equals(new Dollar(5)));
-		$this->assertFalse($five->equals(new Dollar(4)));
+		$five = Money::dollar(5);
+		$this->assertTrue($five->equals(Money::dollar(5)));
+		$this->assertFalse($five->equals(Money::dollar(4)));
 
 		$four = new Euro(4);
 		$this->assertTrue($four->equals(new Euro(4)));

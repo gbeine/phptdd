@@ -5,15 +5,15 @@ namespace money;
 class DollarTest extends \PHPUnit_Framework_TestCase {
 
 	public function testMultiplication() {
-		$four = new Dollar(4);
-		$this->assertEquals(new Dollar(8), $four->times(2));
-		$this->assertEquals(new Dollar(12), $four->times(3));
+		$four = Money::dollar(4);
+		$this->assertEquals(Money::dollar(8), $four->times(2));
+		$this->assertEquals(Money::dollar(12), $four->times(3));
 	}
 
 	public function testEquals() {
-		$five = new Dollar(5);
-		$this->assertTrue($five->equals(new Dollar(5)));
-		$this->assertFalse($five->equals(new Dollar(4)));
+		$five = Money::dollar(5);
+		$this->assertTrue($five->equals(Money::dollar(5)));
+		$this->assertFalse($five->equals(Money::dollar(4)));
 	}
 
 	public function testFactory() {
