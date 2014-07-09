@@ -30,7 +30,7 @@ class Money {
 	}
 
 	static function dollar($amount) {
-		return new Dollar($amount, "USD");
+		return new Money($amount, "USD");
 	}
 
 	static function euro($amount) {
