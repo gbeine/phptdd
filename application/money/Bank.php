@@ -7,4 +7,8 @@ class Bank {
 	function reduce(Expression $exp, $currency) {
 		return $exp->reduce($currency);
 	}
+
+	function addRate($from, $to, $rate) {
+
+	}
 }
