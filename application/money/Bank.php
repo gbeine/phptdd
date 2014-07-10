@@ -15,6 +15,7 @@ class Bank {
 	}
 
 	function rate($from, $to) {
+		if ($from === $to) return 1;
 		return $this->rates[$from.$to];
 	}
 }
