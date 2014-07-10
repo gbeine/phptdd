@@ -29,4 +29,11 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$reduced = $bank->reduce($sum, "EUR");
 		$this->assertNotEquals(Money::dollar(10), $reduced);
 	}
+
+	public function testPlusReturnsSum() {
+		$five = Money::dollar(5);
+		$sum = $five->plus($five);
+		$this->assertEquals($five, $sum->augend);
+		$this->assertEquals($five, $sum->addend);
+	}
 }
