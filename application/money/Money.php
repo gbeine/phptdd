@@ -22,7 +22,7 @@ class Money {
 	}
 
 	function plus(Money $add) {
-		return new Money($this->amount + $add->amount, $this->currency);
+		return new Sum($this, $add);
 	}
 
 	function amount() {
