@@ -18,6 +18,8 @@ class DollarTest extends \PHPUnit_Framework_TestCase {
 
 	public function testAddition() {
 		$sum = Money::dollar(5)->plus(Money::dollar(5));
-		$this->assertEquals(Money::dollar(10), $sum);
+		$bank = new Bank();
+		$reduced = $bank->reduce($sum, "USD");
+		$this->assertEquals(Money::dollar(10), $reduced);
 	}
 }
