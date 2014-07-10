@@ -12,7 +12,7 @@ class Sum implements Expression {
 		$this->addend = $addend;
 	}
 
-	function reduce($to) {
+	function reduce(Bank $bank, $to) {
 		$amount = $this->addend->amount() + $this->augend->amount();
 		return new Money($amount, $to);
 	}

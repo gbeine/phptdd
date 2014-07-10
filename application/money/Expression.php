@@ -4,6 +4,6 @@ namespace money;
 
 interface Expression {
 
-	public function reduce($to);
+	public function reduce(Bank $bank, $to);
 
 }

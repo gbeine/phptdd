@@ -25,7 +25,7 @@ class Money implements Expression {
 		return new Sum($this, $add);
 	}
 
-	function reduce($to) {
+	function reduce(Bank $bank, $to) {
 		return $this;
 	}
 
