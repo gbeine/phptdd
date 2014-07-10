@@ -42,4 +42,11 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$reduced = $bank->reduce(Money::dollar(5), "USD");
 		$this->assertEquals(Money::dollar(5), $reduced);
 	}
+
+	public function testReduceMoneyDifferentCurrencies() {
+		$bank = new Bank();
+		$bank->addRate("EUR", "USD", 2);
+		$reduced = $bank->reduce(Money::euro(10), "USD");
+		$this->assertEquals(Money::dollar(5), $reduced);
+	}
 }
