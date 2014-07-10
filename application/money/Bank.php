@@ -4,7 +4,7 @@ namespace money;
 
 class Bank {
 
-	function reduce($sum, $currency) {
-		return $sum;
+	function reduce(Expression $exp, $currency) {
+		return null;
 	}
 }

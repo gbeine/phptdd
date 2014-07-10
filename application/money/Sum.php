@@ -2,7 +2,7 @@
 
 namespace money;
 
-class Sum {
+class Sum implements Expression {
 
 	var $augend;
 	var $addend;

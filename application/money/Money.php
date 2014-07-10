@@ -2,7 +2,7 @@
 
 namespace money;
 
-class Money {
+class Money implements Expression {
 
 	protected $amount;
 	protected $currency;
