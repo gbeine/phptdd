@@ -7,7 +7,7 @@ class Sum implements Expression {
 	var $augend;
 	var $addend;
 
-	function __construct($augend, $addend) {
+	function __construct(Expression $augend, Expression $addend) {
 		$this->augend = $augend;
 		$this->addend = $addend;
 	}
