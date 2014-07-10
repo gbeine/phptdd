@@ -15,4 +15,9 @@ class DollarTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('money\Money', $eight);
 		$this->assertEquals('USD', $eight->currency());
 	}
+
+	public function testAddition() {
+		$sum = Money::dollar(5)->plus(Money::dollar(5));
+		$this->assertEquals(Money::dollar(10), $sum);
+	}
 }
