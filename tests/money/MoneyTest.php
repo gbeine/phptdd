@@ -20,4 +20,11 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals("EUR", Money::euro(5)->currency());
 		$this->assertEquals("USD", Money::dollar(5)->currency());
 	}
+
+	public function testAddition() {
+		$sum = Money::dollar(5)->plus(Money::dollar(5));
+		$bank = new Bank();
+		$reduced = $bank->reduce($sum, "USD");
+		$this->assertEquals(Money::dollar(10), $reduced);
+	}
 }
