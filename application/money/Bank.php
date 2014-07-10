@@ -9,8 +9,7 @@ class Bank {
 			return $exp;
 		}
 		if ($exp instanceof Sum) {
-			$amount = $exp->addend->amount() + $exp->augend->amount();
-			return new Money($amount, $currency);
+			return $exp->reduce($currency);
 		}
 		return null;
 	}
