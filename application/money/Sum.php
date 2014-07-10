@@ -17,6 +17,10 @@ class Sum implements Expression {
 		return new Money($amount, $to);
 	}
 
+	function plus(Expression $addend) {
+		return new Sum($this, $addend);
+	}
+
 	function addend() {
 		return $this->addend;
 	}
