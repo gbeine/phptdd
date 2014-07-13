@@ -22,7 +22,7 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$sum = Money::dollar(5)->plus(Money::dollar(5));
 
 		$bankMock = $this->getMock('money\Bank');
-		$bankMock->expects($this->once())
+		$bankMock->expects($this->exactly(4))
 			->method('rate')
 			->will($this->returnValue(1));
 
