@@ -13,6 +13,20 @@ class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 	public function testReduceMoneyDifferentCurrencies() {
 		$bank = new Bank();
 		$bank->addRate("EUR", "USD", 2);
+
+		runkit_method_rename(
+			'money\Money',
+			'reduce',
+			'original_reduce'
+		);
+		runkit_method_add(
+			'money\Money',
+			'reduce',
+			'$bank, $to',
+			'print "Reduce $to";'
+		);
+
+
 		$reduced = $bank->reduce(Money::euro(10), "USD");
 		$this->assertMoneyEquals(Money::dollar(5), $reduced);
 	}
