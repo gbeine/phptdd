@@ -15,7 +15,8 @@ class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 		$bank = new Bank();
 		$bank->addRate("EUR", "USD", 2);
 		$reduced = $bank->reduce(Money::euro(10), "USD");
-		$this->assertEquals(Money::dollar(5), $reduced);
+		$this->assertMoneyValue(5, $reduced);
+		$this->assertMoneyCurrency('USD', $reduced);
 	}
 
 	public function testMixedAddition() {
@@ -24,6 +25,7 @@ class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 		$bank = new Bank();
 		$bank->addRate("EUR", "USD", 2);
 		$result = $bank->reduce($five->plus($ten), "USD");
-		$this->assertEquals(Money::dollar(10), $result);
+		$this->assertMoneyValue(10, $result);
+		$this->assertMoneyCurrency('USD', $result);
 	}
 }
