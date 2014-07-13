@@ -2,7 +2,7 @@
 
 namespace money;
 
-class BankTest extends \PHPUnit_Framework_TestCase {
+class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 
 	public function testReduceMoney() {
 		$bank = new Bank();
