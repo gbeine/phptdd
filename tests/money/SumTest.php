@@ -29,7 +29,7 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$reduced = $sum->reduce($bankMock, "USD");
 		$this->assertEquals(Money::dollar(10), $reduced);
 		$reduced = $sum->reduce($bankMock, "EUR");
-		$this->assertNotEquals(Money::dollar(10), $reduced);
+		$this->assertEquals(Money::euro(5), $reduced);
 	}
 
 	public function testSumPlusMoney() {
