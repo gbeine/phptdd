@@ -7,7 +7,7 @@ class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 	public function testReduceMoney() {
 		$bank = new Bank();
 		$reduced = $bank->reduce(Money::dollar(5), "USD");
-		$this->assertEquals(Money::dollar(5), $reduced);
+		$this->assertMoneyValue(5, $reduced);
 	}
 
 	public function testReduceMoneyDifferentCurrencies() {
