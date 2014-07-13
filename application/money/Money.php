@@ -30,6 +30,10 @@ class Money implements Expression {
 		return new Money($this->amount / $rate, $to);
 	}
 
+	function __toString() {
+		return "{ Money (" . $this->amount . ", '" . $this->currency . "') }";
+	}
+
 	function amount() {
 		return $this->amount;
 	}
