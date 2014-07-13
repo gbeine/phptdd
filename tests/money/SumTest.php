@@ -11,11 +11,15 @@ class SumTest extends \PHPUnit_Framework_TestCase implements iBank {
 				array("USD", "EUR", 2)
 			);
 
+	private $wasCalled;
+
 	public function setUp() {
 		$this->bankStub = $this->getMock('money\Bank');
 		$this->bankStub->expects($this->any())
 			->method('rate')
 			->will($this->returnValueMap($this->valueMap));
+
+		$this->wasCalled = false;
 	}
 
 	public function testAddition() {
@@ -51,11 +55,13 @@ class SumTest extends \PHPUnit_Framework_TestCase implements iBank {
 
 		$sum = new Sum($five, $ten);
 		$sum = $sum->times(2);
-		$result = $sum->reduce($this->bankStub, "USD");
+		$result = $sum->reduce($this, "USD");
 		$this->assertEquals(Money::dollar(20), $result);
+		$this->assertTrue($this->wasCalled);
 	}
 
 	public function rate($from, $to) {
+		$this->wasCalled = true;
 		if ($from === $to)
 			return 1;
 		else
