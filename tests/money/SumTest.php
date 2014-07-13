@@ -22,9 +22,9 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$sum = Money::dollar(5)->plus(Money::dollar(5));
 		$bank = new Bank();
 		$bank->addRate("USD", "EUR", 4);
-		$reduced = $bank->reduce($sum, "USD");
+		$reduced = $sum->reduce($bank, "USD");
 		$this->assertEquals(Money::dollar(10), $reduced);
-		$reduced = $bank->reduce($sum, "EUR");
+		$reduced = $sum->reduce($bank, "EUR");
 		$this->assertNotEquals(Money::dollar(10), $reduced);
 	}
 
