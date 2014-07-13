@@ -11,7 +11,7 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$bankStub = $this->getMock('money\Bank');
 		$bankStub->expects($this->any())
 			->method('rate')
-			->will($this->returnValue(2));
+			->will($this->onConsecutiveCalls(1,2,1));
 
 		$sum = new Sum($five, $ten);
 		$sum = $sum->plus($five);
