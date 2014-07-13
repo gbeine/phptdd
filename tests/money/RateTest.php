@@ -23,4 +23,16 @@ class RateTest extends \PHPUnit\Persistence\AbstractTestCase {
 		$this->em->flush();
 		$this->assertEquals(2, $this->getConnection()->getRowCount('rates'));
 	}
+
+	/**
+	 * @depends testRatePersistence
+	 */
+	function testQueryTable() {
+		$queryTable = $this->getConnection()->createQueryTable(
+				'rates', 'SELECT * FROM rates'
+		);
+		$expectedTable = $this->createFlatXmlDataSet(__DIR__.'/../_files/rates.xml')
+			->getTable("rates");
+		$this->assertTablesEqual($expectedTable, $queryTable);
+	}
 }
