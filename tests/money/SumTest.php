@@ -5,17 +5,17 @@ namespace money;
 class SumTest extends \PHPUnit_Framework_TestCase {
 
 	private $bankStub;
+	private $valueMap = array(
+				array("USD", "USD", 1),
+				array("EUR", "USD", 2),
+				array("USD", "EUR", 2)
+			);
 
 	public function setUp() {
-		$valueMap = array(
-				array("USD", "USD", 1),
-				array("EUR", "USD", 2)
-		);
-
 		$this->bankStub = $this->getMock('money\Bank');
 		$this->bankStub->expects($this->any())
 			->method('rate')
-			->will($this->returnValueMap($valueMap));
+			->will($this->returnValueMap($this->valueMap));
 	}
 
 	public function testAddition() {
@@ -24,7 +24,7 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$bankMock = $this->getMock('money\Bank');
 		$bankMock->expects($this->exactly(4))
 			->method('rate')
-			->will($this->returnValue(1));
+			->will($this->returnValueMap($this->valueMap));
 
 		$reduced = $sum->reduce($bankMock, "USD");
 		$this->assertEquals(Money::dollar(10), $reduced);
