@@ -11,7 +11,7 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$bank->addRate("EUR", "USD", 2);
 		$sum = new Sum($five, $ten);
 		$sum = $sum->plus($five);
-		$result = $bank->reduce($sum, "USD");
+		$result = $sum->reduce($bank, "USD");
 		$this->assertEquals(Money::dollar(15), $result);
 	}
 
@@ -22,7 +22,7 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$bank->addRate("EUR", "USD", 2);
 		$sum = new Sum($five, $ten);
 		$sum = $sum->times(2);
-		$result = $bank->reduce($sum, "USD");
+		$result = $sum->reduce($bank, "USD");
 		$this->assertEquals(Money::dollar(20), $result);
 	}
 }
