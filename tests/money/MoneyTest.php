@@ -34,4 +34,9 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($five, $anotherFive);
 		$this->assertSame($five, $anotherFive);
 	}
+
+	public function testFactory() {
+		$fiveDollar = Money::factory(5, "USD");
+		$this->assertEquals(Money::dollar(5), $fiveDollar);
+	}
 }
