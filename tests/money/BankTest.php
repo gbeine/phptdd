@@ -28,6 +28,7 @@ class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 
 		$reduced = $bank->reduce(Money::euro(10), "USD");
 		$this->assertMoneyEquals(Money::dollar(5), $reduced);
+		$this->expectOutputString('Reduce USD');
 
 		runkit_method_remove(
 			'money\Money',
