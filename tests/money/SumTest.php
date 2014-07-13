@@ -7,11 +7,15 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 	public function testSumPlusMoney() {
 		$five = Money::dollar(5);
 		$ten = Money::euro(10);
-		$bank = new Bank();
-		$bank->addRate("EUR", "USD", 2);
+
+		$bankStub = $this->getMock('money\Bank');
+		$bankStub->expects($this->any())
+			->method('rate')
+			->will($this->returnValue(2));
+
 		$sum = new Sum($five, $ten);
 		$sum = $sum->plus($five);
-		$result = $sum->reduce($bank, "USD");
+		$result = $sum->reduce($bankStub, "USD");
 		$this->assertEquals(Money::dollar(15), $result);
 	}
 
