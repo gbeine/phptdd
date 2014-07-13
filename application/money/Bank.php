@@ -2,7 +2,7 @@
 
 namespace money;
 
-class Bank {
+class Bank implements iBank {
 
 	private $rates = array();
 
