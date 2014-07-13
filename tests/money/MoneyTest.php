@@ -33,10 +33,17 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$anotherFive = Money::dollar(5);
 		$this->assertEquals($five, $anotherFive);
 		$this->assertSame($five, $anotherFive);
+		$ten = Money::euro(10);
+		$anotherTen = Money::euro(10);
+		$this->assertSame($ten, $anotherTen);
+		$fiveEuro = Money::euro(5);
+		$this->assertNotSame($five, $fiveEuro);
 	}
 
 	public function testFactory() {
 		$fiveDollar = Money::factory(5, "USD");
 		$this->assertEquals(Money::dollar(5), $fiveDollar);
+		$fiveEuro = Money::factory(5, "EUR");
+		$this->assertEquals(Money::euro(5), $fiveEuro);
 	}
 }
