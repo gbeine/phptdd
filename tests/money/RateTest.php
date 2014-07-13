@@ -20,6 +20,7 @@ class RateTest extends \PHPUnit\Persistence\AbstractTestCase {
 
 		$rate = new Rate("EUR", "USD", 2);
 		$this->em->persist($rate);
+		$this->em->flush();
 		$this->assertEquals(2, $this->getConnection()->getRowCount('rates'));
 	}
 }
