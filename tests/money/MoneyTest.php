@@ -27,4 +27,11 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($five, $sum->augend());
 		$this->assertEquals($five, $sum->addend());
 	}
+
+	public function testValueCache() {
+		$five = Money::dollar(5);
+		$anotherFive = Money::dollar(5);
+		$this->assertEquals($five, $anotherFive);
+		$this->assertSame($five, $anotherFive);
+	}
 }
