@@ -2,7 +2,7 @@
 
 namespace money;
 
-class SumTest extends \PHPUnit_Framework_TestCase {
+class SumTest extends \PHPUnit_Framework_TestCase implements iBank {
 
 	private $bankStub;
 	private $valueMap = array(
@@ -53,5 +53,12 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$sum = $sum->times(2);
 		$result = $sum->reduce($this->bankStub, "USD");
 		$this->assertEquals(Money::dollar(20), $result);
+	}
+
+	public function rate($from, $to) {
+		if ($from === $to)
+			return 1;
+		else
+			return 2;
 	}
 }
