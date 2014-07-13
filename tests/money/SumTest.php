@@ -32,14 +32,9 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$five = Money::dollar(5);
 		$ten = Money::euro(10);
 
-		$bankStub = $this->getMock('money\Bank');
-		$bankStub->expects($this->any())
-			->method('rate')
-			->will($this->onConsecutiveCalls(1,2));
-
 		$sum = new Sum($five, $ten);
 		$sum = $sum->times(2);
-		$result = $sum->reduce($bankStub, "USD");
+		$result = $sum->reduce($this->bankStub, "USD");
 		$this->assertEquals(Money::dollar(20), $result);
 	}
 }
