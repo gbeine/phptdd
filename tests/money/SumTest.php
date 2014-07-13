@@ -18,6 +18,16 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 			->will($this->returnValueMap($valueMap));
 	}
 
+	public function testAddition() {
+		$sum = Money::dollar(5)->plus(Money::dollar(5));
+		$bank = new Bank();
+		$bank->addRate("USD", "EUR", 4);
+		$reduced = $bank->reduce($sum, "USD");
+		$this->assertEquals(Money::dollar(10), $reduced);
+		$reduced = $bank->reduce($sum, "EUR");
+		$this->assertNotEquals(Money::dollar(10), $reduced);
+	}
+
 	public function testSumPlusMoney() {
 		$five = Money::dollar(5);
 		$ten = Money::euro(10);
