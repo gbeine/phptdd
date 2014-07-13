@@ -24,6 +24,7 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$bankMock = $this->getMock('money\Bank');
 		$bankMock->expects($this->exactly(4))
 			->method('rate')
+			->with($this->equalTo("USD"), $this->isType('string'))
 			->will($this->returnValueMap($this->valueMap));
 
 		$reduced = $sum->reduce($bankMock, "USD");
