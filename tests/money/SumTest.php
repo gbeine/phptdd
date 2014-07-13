@@ -20,11 +20,15 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 
 	public function testAddition() {
 		$sum = Money::dollar(5)->plus(Money::dollar(5));
-		$bank = new Bank();
-		$bank->addRate("USD", "EUR", 4);
-		$reduced = $sum->reduce($bank, "USD");
+
+		$bankMock = $this->getMock('money\Bank');
+		$bankMock->expects($this->once())
+			->method('rate')
+			->will($this->returnValue(1));
+
+		$reduced = $sum->reduce($bankMock, "USD");
 		$this->assertEquals(Money::dollar(10), $reduced);
-		$reduced = $sum->reduce($bank, "EUR");
+		$reduced = $sum->reduce($bankMock, "EUR");
 		$this->assertNotEquals(Money::dollar(10), $reduced);
 	}
 
