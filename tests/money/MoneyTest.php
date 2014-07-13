@@ -59,26 +59,4 @@ class MoneyTest extends \PHPUnit_Framework_TestCase {
 		$result = $bank->reduce($five->plus($ten), "USD");
 		$this->assertEquals(Money::dollar(10), $result);
 	}
-
-	public function testSumPlusMoney() {
-		$five = Money::dollar(5);
-		$ten = Money::euro(10);
-		$bank = new Bank();
-		$bank->addRate("EUR", "USD", 2);
-		$sum = new Sum($five, $ten);
-		$sum = $sum->plus($five);
-		$result = $bank->reduce($sum, "USD");
-		$this->assertEquals(Money::dollar(15), $result);
-	}
-
-	public function testSumTimes() {
-		$five = Money::dollar(5);
-		$ten = Money::euro(10);
-		$bank = new Bank();
-		$bank->addRate("EUR", "USD", 2);
-		$sum = new Sum($five, $ten);
-		$sum = $sum->times(2);
-		$result = $bank->reduce($sum, "USD");
-		$this->assertEquals(Money::dollar(20), $result);
-	}
 }
