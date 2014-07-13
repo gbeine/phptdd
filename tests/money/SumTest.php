@@ -8,10 +8,15 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 		$five = Money::dollar(5);
 		$ten = Money::euro(10);
 
+		$valueMap = array(
+				array("USD", "USD", 1),
+				array("EUR", "USD", 2)
+		);
+
 		$bankStub = $this->getMock('money\Bank');
 		$bankStub->expects($this->any())
 			->method('rate')
-			->will($this->onConsecutiveCalls(1,2,1));
+			->will($this->returnValueMap($valueMap));
 
 		$sum = new Sum($five, $ten);
 		$sum = $sum->plus($five);
