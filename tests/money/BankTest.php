@@ -23,7 +23,7 @@ class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 			'money\Money',
 			'reduce',
 			'$bank, $to',
-			'print "Reduce $to";'
+			'print "Reduce $to"; return $this->original_reduce($bank, $to);'
 		);
 
 
