@@ -25,7 +25,7 @@ class WebTest extends \PHPUnit_Extensions_SeleniumTestCase {
 
     public function testTitle() {
         $this->open('http://www.google.com/');
-        $this->assertTitle('Google Fail');
+        $this->assertTitle('Google');
     }
 }
 
