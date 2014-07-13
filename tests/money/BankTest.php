@@ -26,9 +26,18 @@ class BankTest extends \PHPUnit\Bank\AbstractTestCase {
 			'print "Reduce $to"; return $this->original_reduce($bank, $to);'
 		);
 
-
 		$reduced = $bank->reduce(Money::euro(10), "USD");
 		$this->assertMoneyEquals(Money::dollar(5), $reduced);
+
+		runkit_method_remove(
+			'money\Money',
+			'reduce'
+		);
+		runkit_method_rename(
+			'money\Money',
+			'original_reduce',
+			'reduce'
+		);
 	}
 
 	public function testMixedAddition() {
