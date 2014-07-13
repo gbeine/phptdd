@@ -12,8 +12,19 @@
 	<property name="test.report.file" value="${report.dir}/testsuites.xml" />
 	<property name="test.report.dir" value="${report.dir}/tests" />
 	<property name="style.dir" value="${pear.dir}/data/phing/etc" />
+	<property name="selenium" value="lib/selenium-server-standalone-2.42.2.jar"/>
 
-	<target name="test">
+	<target name="selenium">
+		<mkdir dir="${report.dir}" />
+		<exec command="java -jar ${selenium}"
+			output="${report.dir}/selenium.log"
+			spawn="true"/>
+		<waitfor maxwaitunit="second" maxwait="3">
+			<istrue value="false"/>
+		</waitfor>
+	</target>
+
+	<target name="test" depends="selenium">
 		<mkdir dir="${report.dir}" />
 		<phpunit bootstrap="${test.bootstrap}">
 			<formatter todir="${report.dir}" type="xml"/>
