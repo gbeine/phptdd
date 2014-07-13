@@ -43,7 +43,11 @@ class Money implements Expression {
 	}
 
 	static function dollar($amount) {
-		return new Money($amount, "USD");
+		static $dollars = array();
+		if ( ! array_key_exists($amount, $dollars)) {
+			$dollars[$amount] = new Money($amount, "USD");
+		}
+		return $dollars[$amount];
 	}
 
 	static function euro($amount) {
