@@ -43,14 +43,19 @@ class Money implements Expression {
 	}
 
 	static function dollar($amount) {
-		static $dollars = array();
-		if ( ! array_key_exists($amount, $dollars)) {
-			$dollars[$amount] = new Money($amount, "USD");
-		}
-		return $dollars[$amount];
+		return self::factory($amount, "USD");
 	}
 
 	static function euro($amount) {
 		return new Money($amount, "EUR");
 	}
+
+	static function factory($amount, $currency) {
+		static $money = array();
+		if ( ! array_key_exists($amount, $money)) {
+			$money[$amount] = new Money($amount, $currency);
+		}
+		return $money[$amount];
+	}
+
 }
