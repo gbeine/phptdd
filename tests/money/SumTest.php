@@ -22,11 +22,15 @@ class SumTest extends \PHPUnit_Framework_TestCase {
 	public function testSumTimes() {
 		$five = Money::dollar(5);
 		$ten = Money::euro(10);
-		$bank = new Bank();
-		$bank->addRate("EUR", "USD", 2);
+
+		$bankStub = $this->getMock('money\Bank');
+		$bankStub->expects($this->any())
+			->method('rate')
+			->will($this->onConsecutiveCalls(1,2));
+
 		$sum = new Sum($five, $ten);
 		$sum = $sum->times(2);
-		$result = $sum->reduce($bank, "USD");
+		$result = $sum->reduce($bankStub, "USD");
 		$this->assertEquals(Money::dollar(20), $result);
 	}
 }
