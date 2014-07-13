@@ -4,23 +4,27 @@ namespace money;
 
 class SumTest extends \PHPUnit_Framework_TestCase {
 
-	public function testSumPlusMoney() {
-		$five = Money::dollar(5);
-		$ten = Money::euro(10);
+	private $bankStub;
 
+	public function setUp() {
 		$valueMap = array(
 				array("USD", "USD", 1),
 				array("EUR", "USD", 2)
 		);
 
-		$bankStub = $this->getMock('money\Bank');
-		$bankStub->expects($this->any())
+		$this->bankStub = $this->getMock('money\Bank');
+		$this->bankStub->expects($this->any())
 			->method('rate')
 			->will($this->returnValueMap($valueMap));
+	}
+
+	public function testSumPlusMoney() {
+		$five = Money::dollar(5);
+		$ten = Money::euro(10);
 
 		$sum = new Sum($five, $ten);
 		$sum = $sum->plus($five);
-		$result = $sum->reduce($bankStub, "USD");
+		$result = $sum->reduce($this->bankStub, "USD");
 		$this->assertEquals(Money::dollar(15), $result);
 	}
 
